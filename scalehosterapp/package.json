@@ -4,7 +4,8 @@
   "description": "Scale Hoster upload and download images ",
   "main": "index.ts",
   "scripts": {
-    "test": "npm run test"
+    "test": "npm run test",
+    "dev": "ts-node-dev --respawn --transpile-only ./index.ts"
   },
   "repository": {
     "type": "git",
