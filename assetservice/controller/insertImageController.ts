@@ -6,11 +6,18 @@ const InsertImageController = (): InsertImageControllerT => {
     req: Request<{}, {}, {}, {}>,
     res: Response
   ) => {
-    res.json({ hello: "word" });
+    console.log(req.body, 's')
+    return res.status(201).json({ hello: "word" });
   };
+
+  const getImageAsset = async( req: Request,
+    res: Response) => {
+
+  }
 
   return {
     postImageAsset,
+    getImageAsset
   };
 };
 

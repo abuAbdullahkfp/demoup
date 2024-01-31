@@ -3,7 +3,7 @@ version: '3'
 services:
   scalehosterapp:
     build:
-      context: ./scalehosterapp
+      context: ./categoryservice
     ports:
       - "3000:3000"
   assetservice:

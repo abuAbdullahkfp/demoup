@@ -17,5 +17,3 @@ const start = async () => {
 }
 
 start()
-
-process.on('SIGINT', gracefulExit).on('SIGTERM', gracefulExit)  

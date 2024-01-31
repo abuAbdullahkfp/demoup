@@ -14,9 +14,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(helmet());
 app.use(cors(options));
 
+app.use((req: Request, res: Response, next: NextFunction) => {
+    console.log(`New Request: Route: ${req.path}`)
+    next()
+})
+
 const apiVersion = 'v1'
 
-app.use(`api/${apiVersion}`, insertImageRouter)
+app.use(`/api/${apiVersion}`, insertImageRouter)
 
 asyncHandler(
   app.all("*", async (req: Request, res: Response, next: NextFunction) => {

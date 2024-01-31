@@ -9,4 +9,6 @@ router.post(
   asyncHandler(insertImageController.postImageAsset)
 );
 
+router.get("/get-image", asyncHandler(insertImageController.getImageAsset));
+
 export { router as insertImageRouter };
