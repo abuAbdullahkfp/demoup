@@ -11,14 +11,16 @@ const InsertImageController = (): InsertImageControllerT => {
     res: Response
   ) => {
     const image_id = uuidv4()
-    const {imageUrl, categories} = req.body
+    const {imageUrl} = req.body
     const imageResponse = await axios.get(imageUrl, {responseType: "arraybuffer"})
     const imageBuffer = Buffer.from(imageResponse.data, 'binary')
+ 
     const inserted_image = await Assets.create({
         image: imageBuffer,
         imageId: image_id,
-        categories
+        publicUrl: `${image_id}.jpg`
     })
+
     return res.status(201).json(inserted_image);
   };
 
