@@ -1,4 +1,3 @@
-import {ControllerT} from './controller'
 import {Request, Response} from 'express'
 
 

@@ -1,7 +1,6 @@
 import { InsertImageControllerT } from "../types/controller";
 import { Request, Response } from "express";
 import { IPostImageRequest } from "../types/post-image-request";
-import {randomBytes} from 'crypto'
 import { Assets } from "../db/models/assets";
 import {v4 as uuidv4} from 'uuid'
 import axios from 'axios'

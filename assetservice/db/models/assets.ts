@@ -5,8 +5,8 @@ import { SchemaRef } from "../../constant/entity";
 export const AssetSchema = new Schema(
   {
     image: { type: Buffer, required: true },
-    categories: [{ type: String }],
     imageId: { type: String, required: true },
+    publicUrl: {type: String, required: true}
   },
   {
     timestamps: true,
