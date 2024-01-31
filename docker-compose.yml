@@ -13,6 +13,8 @@ services:
       - "3001:3001"
     depends_on:
       - mongodb
+    volumes:
+      - ./assetservice:/app
   mongodb:
     image: mongo 
     ports:
