@@ -1,0 +1,96 @@
+{
+	"info": {
+		"_postman_id": "d9fd2157-ccb7-4e9e-9afc-25024e0ecae1",
+		"name": "DemoUp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15907031"
+	},
+	"item": [
+		{
+			"name": "POST IMAGE ASSETS",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/api/v1/insert-image",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"v1",
+						"insert-image"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST CATEGORIES",
+			"request": {
+				"method": "POST",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "GET IMAGE URL BY IMAGE ID",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "POST EVENT TO CATEGORIES",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"event\": {\n        \"type\": \"AssetCreated\",\n        \"imageId\": \"c2213c03-615e-401b-b7ad-cc91d1e23a2b\",\n    \"publicImageUrl\": \"c2213c03-615e-401b-b7ad-cc91d1e23a2b.jpg\",\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/api/v1/events",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"v1",
+						"events"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST EVENT TO Notification /Retrieve assets",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/events",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"events"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
