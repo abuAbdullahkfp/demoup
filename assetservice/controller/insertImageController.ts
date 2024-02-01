@@ -24,14 +24,13 @@ const InsertImageController = (): InsertImageControllerT => {
     return res.status(201).json(inserted_image);
   };
 
-  const getImageAsset = async( req: Request,
-    res: Response) => {
+//   const getImageAsset = async( req: Request,
+//     res: Response) => {
 
-  }
+//   }
 
   return {
-    postImageAsset,
-    getImageAsset
+    postImageAsset
   };
 };
 
