@@ -8,11 +8,10 @@ const InserCategoriesController = (): InserCategoriesControllerT => {
     req: Request<{}, {}, IPostCategoriesRequest, {}>,
     res: Response
   ) => {
-    const { categories, publicImageUrl, imageName } = req.body;
+    const { categories, imageId } = req.body;
     const insert_categories = await Categories.create({
       categories,
-      publicImageUrl,
-      imageName,
+      imageId,
     });
     return res.status(201).json(insert_categories);
   };

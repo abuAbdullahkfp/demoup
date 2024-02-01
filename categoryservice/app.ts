@@ -6,6 +6,7 @@ import { errorHandler } from "./error/error-handler";
 import { asyncHandler } from "./utils/async-handler";
 import { NotFoundError } from "./error/notFoundError";
 import { insertCategoriesRouter } from "./router/insertCategory.router";
+import { eventRouter } from "./router/eventRouter.router";
 
 const app = express();
 app.use(express.json());
@@ -21,6 +22,8 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 const apiVersion = 'v1'
 
 app.use(`/api/${apiVersion}`, insertCategoriesRouter)
+
+app.use(`/api/${apiVersion}`,eventRouter)
 
 asyncHandler(
   app.all("*", async (req: Request, res: Response, next: NextFunction) => {

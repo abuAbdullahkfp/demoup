@@ -5,7 +5,7 @@ services:
     build:
       context: ./categoryservice
     ports:
-      - "3000:3000"
+      - "3001:3001"
     depends_on:
       - mongodb
     volumes:
@@ -14,7 +14,7 @@ services:
     build:
       context: ./assetservice
     ports:
-      - "3001:3001"
+      - "3000:3000"
     depends_on:
       - mongodb
     volumes:
@@ -28,6 +28,13 @@ services:
       - mongodb
     volumes:
       - ./getimageservice:/app
+  eventbus:
+    build:
+      context: ./event-bus
+    ports:
+      - "3005:3005"
+    volumes:
+      - ./event-bus:/app
   mongodb:
     image: mongo 
     ports:

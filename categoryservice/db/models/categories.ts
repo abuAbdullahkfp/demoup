@@ -5,8 +5,7 @@ import { ICategoriesDoc, ICategoriesModel } from "../../types/categories";
 export const CategoriesSchema = new Schema(
   {
     categories: [{ type: String, required: true }],
-    publicImageUrl: { type: String,  required: true },
-    imageName: { type: String, required: true },
+    imageId: { type: String, required: true },
   },
   {
     timestamps: true,

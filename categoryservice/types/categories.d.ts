@@ -2,8 +2,7 @@ import { Document, Model } from "mogoose";
 
 export interface ICategoriesDoc extends Document {
   categories: Array<string>;
-  publicImageUrl: string;
-  imageName: string;
+  imageId: string;
   createdAt?: Date;
   updatedAt?: Date;
 }

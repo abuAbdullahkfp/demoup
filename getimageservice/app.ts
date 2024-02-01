@@ -7,6 +7,7 @@ import { errorHandler } from "./error/error-handler";
 import { asyncHandler } from "./utils/async-handler";
 import { NotFoundError } from "./error/notFoundError";
 import { retrieveImageRouter } from "./router/getImageUrl";
+import { eventRouter } from "./router/eventRouter.router";
 
 const app = express();
 app.use(express.json());
@@ -22,6 +23,7 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 const apiVersion = 'v1'
 
 app.use(`/api/${apiVersion}`, retrieveImageRouter)
+app.use(`/api/${apiVersion}`,eventRouter)
 
 asyncHandler(
   app.all("*", async (req: Request, res: Response, next: NextFunction) => {
