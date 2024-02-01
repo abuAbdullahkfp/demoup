@@ -18,7 +18,7 @@ const InsertImageController = (): InsertImageControllerT => {
     const inserted_image = await Assets.create({
         image: imageBuffer,
         imageId: image_id,
-        publicUrl: `${image_id}.jpg`
+        publicImageUrl: `${image_id}.jpg`
     })
 
     return res.status(201).json(inserted_image);

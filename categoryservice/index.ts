@@ -10,7 +10,7 @@ const dbUrl: string = process.env.DB_URL!
 const start = async () => {
     try {
         await connectDb(dbUrl)
-        app.listen(PORT, () => console.log(`Service listening on port ${PORT} ${dbUrl}`))
+        app.listen(PORT, () => console.log(`Service listening on port ${PORT}`))
     } catch(error) {
         console.warn(`Error while starting the service on PORT ${PORT}`, error)
     }

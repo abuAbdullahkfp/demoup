@@ -6,7 +6,7 @@ export const AssetSchema = new Schema(
   {
     image: { type: Buffer, required: true },
     imageId: { type: String, required: true },
-    publicUrl: {type: String, required: true}
+    publicImageUrl: {type: String, required: true}
   },
   {
     timestamps: true,

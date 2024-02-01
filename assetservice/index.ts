@@ -2,7 +2,7 @@ import "dotenv/config"
 
 import {app} from "./app"
 import { PortConst } from "./constant/port-const"
-import { connectDb, gracefulExit } from "./db/mongodb"
+import { connectDb} from "./db/mongodb"
 
 const PORT: string = process.env.PORT || PortConst.PORT
 const dbUrl: string = process.env.DB_URL!
