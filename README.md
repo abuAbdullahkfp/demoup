@@ -35,13 +35,13 @@ To run the application in development mode, follow these steps:
 1. Clone the repository:
 
    ```bash
-   git clone <repository_url>
+   git clone https://github.com/abuAbdullahkfp/demoup.git
    ```
 
 2. Navigate to the project root directory:
 
    ```bash
-   cd <project_directory>
+   cd demoup
    ```
 
 3. Run the Docker Compose file:
@@ -54,30 +54,75 @@ To run the application in development mode, follow these steps:
 
 ## Task Fulfillment https://miro.com/app/board/uXjVNy3chQk=/?share_link_id=358394795065
 
-### 1. Service Units Design
+### 1. Microservices Design:
 
-Service units have been designed based on the requirements, including `CategoryService`, `AssetService`, `RetrieveImageService`, and `EventBus`.
+#### Service Units:
+1. **AssetService:**
+   - Handles the insertion of images.
+   - Downloads the resource from the provided URL.
+   - Processes the image, extracts metadata.
+   - Stores the image and generates a public URL.
 
-### 2. Data Storage Modeling
+2. **CategoryService:**
+   - Manages the categories for images.
 
-Conceptual data storage for millions of assets and categories is implemented within their bounded contexts in a microservices-oriented architecture. Distinction between read and write optimized models is considered.
+3. **FetchService:**
+   - Manages the asynchronous process of image insertion.
+   - Provides the public image URL to the customer.
 
-### 3. Sequence Diagrams
+#### Bounded Contexts:
+- **AssetService Bounded Context:**
+  - Manages the lifecycle of assets, including image processing and storage.
+  
+- **CategoryService Bounded Context:**
+  - Manages the categorization of images.
 
-Sequence diagrams illustrating the flows of inserting and getting images with relevant domain events have been created. The diagrams also include fault-tolerant mechanisms.
+- **FetchService Bounded Context:**
+  - Manages the asynchronous process of image insertion and public URL retrieval.
 
-### 4. Solution Justification
+### 2. Conceptual Data Storage:
 
-Rejected solutions are justified based on scalability, maintainability, and performance concerns. The chosen architecture aligns with microservices best practices.
+#### AssetService Bounded Context:
+- **Write-Optimized Model:**
+  - **Assets Table:**
+    - Columns: asset_id, download_url, processed_image, metadata, category_id, created_at.
+- **Read-Optimized Model (Pro Task):**
+  - **Assets ByCategory View:**
+    - Columns: category_id, asset_id, public_url, created_at.
 
-### 5. Bonus: Read-Optimized Data Model
+#### CategoryService Bounded Context:
+- **Categories Table:**
+  - Columns: category_id, categories.
 
-An additional architecture for a read-optimized data model is provided, addressing the need for efficient retrieval of image-related information.
+### 3. Sequence Diagram:
 
-## Conclusion
+#### Inserting Images:
+1. Customer -> AssetService: Insert Image Request (download_url, category)
+2. AssetService -> FetchService: Process Image (asynchronous)
+3. retrieveService -> Customer: Public Image URL
 
-This microservices architecture project demonstrates a scalable, fault-tolerant, and maintainable solution for ScaleHoster Inc. It serves as a foundation for further development and refinement based on specific business needs.
+#### Getting Images:
+1. Customer -> AssetService: Get Image Request (asset_id)
+2. AssetService -> Customer: Public Image URL
 
-Feel free to explore the code, diagrams, and configurations to gain a deeper understanding of the microservices architecture. If you have any questions or feedback, please don't hesitate to reach out.
+### Fault Tolerance:
+- Use message queues for communication between microservices to handle asynchronous processes robustly.
+- Implement retry mechanisms for failed operations.
+- Use idempotent operations to ensure the system's stability in case of failures.
 
-Thank you for reviewing the ScaleHoster Microservices Architecture!
+### 4. Justification:
+
+#### Rejected Solutions:
+- **Monolithic Architecture:**
+  - Rejected due to scalability issues and difficulty in maintaining and updating.
+  
+- **Direct Synchronous Communication:**
+  - Rejected as it might lead to performance issues and potential downtime.
+
+### 5. Bonus: Read-Optimized Data Model:
+
+#### AssetService Bounded Context (Read-Optimized Model):
+- **Assets ByDate View:**
+  - Columns: created_at, asset_id, public_url.
+
+This additional view allows efficient retrieval of images based on the creation date, optimizing read operations for scenarios where chronological access is common.
