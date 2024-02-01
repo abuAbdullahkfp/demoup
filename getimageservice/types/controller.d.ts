@@ -1,8 +1,8 @@
 import {Request, Response} from 'express'
-
+import {IImageRequestParams} from './image-request-params'
 
 
 export interface RetrieveImageControllerT  {
-    getImageAsset(req: Request, res: Response): void;
+    getImageAssetById(req: Request<IImageRequestParams, {}, {}, {}>, res: Response): void;
     
 }

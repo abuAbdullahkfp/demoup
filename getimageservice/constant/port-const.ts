@@ -1,4 +1,4 @@
 
 export enum PortConst {
-    PORT = '3003'
+    PORT = '3002'
 }

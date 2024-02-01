@@ -5,7 +5,7 @@ import {retrieveImageController} from '../controller/retrieveImageController'
 
 const router = Router()
 
-router.get("/get-image", asyncHandler(retrieveImageController.getImageAsset));
+router.get("/get-image/:id", asyncHandler(retrieveImageController.getImageAssetById));
 
 
 export {router as retrieveImageRouter}

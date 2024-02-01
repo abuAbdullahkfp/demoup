@@ -19,6 +19,15 @@ services:
       - mongodb
     volumes:
       - ./assetservice:/app
+  retrieveimageservice:
+    build: 
+      context: ./getimageservice
+    ports:
+      - "3002:3002"
+    depends_on:
+      - mongodb
+    volumes:
+      - ./getimageservice:/app
   mongodb:
     image: mongo 
     ports:
