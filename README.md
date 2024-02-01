@@ -126,3 +126,36 @@ To run the application in development mode, follow these steps:
   - Columns: created_at, asset_id, public_url.
 
 This additional view allows efficient retrieval of images based on the creation date, optimizing read operations for scenarios where chronological access is common.
+
+I have just used Mongodb , just for showcasing and quicker implement.
+
+Additional Recommendations and Feedback
+Database Design:
+Separate Databases for Microservices:
+
+Consider using a separate and dedicated database for each microservice to ensure loose coupling and independence.
+SQL Database for Categories:
+
+For the CategoryService, consider using a relational database like PostgreSQL or MySQL, especially if there are complex relationships or querying requirements.
+Indexing:
+
+Implement proper indexing on relevant fields, especially in the SQL database, to optimize search and retrieval operations.
+Service Communication:
+Event-Driven Architecture:
+
+Leverage an event-driven architecture more explicitly. Events should be emitted by microservices to communicate changes and updates. This enhances decoupling and scalability.
+Event Sourcing:
+
+Explore event sourcing patterns for persisting the state of entities as a sequence of events. This can be beneficial for tracking changes and maintaining consistency.
+Docker Compose:
+Environment Variables:
+Consider using environment variables in the Docker Compose file for better configurability and security, especially for sensitive information like database credentials.
+DevOps:
+Scaling Considerations:
+
+Plan for scaling microservices individually based on their specific needs. Tools like Kubernetes can be explored for orchestration and scaling.
+Monitoring and Logging:
+
+Implement robust monitoring and logging solutions to track the health and performance of microservices. Tools like Prometheus and Grafana can be considered.
+Conclusion:
+The architecture presented is a strong foundation, but these additional considerations can further enhance scalability, maintainability, and overall robustness of the microservices system. Always adapt architectural decisions based on the specific needs and constraints of the project.
